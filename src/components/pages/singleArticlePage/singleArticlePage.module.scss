@@ -1,0 +1,12 @@
+.single-article {
+	display: grid;
+	grid-template-columns: minmax(320px, 940px);
+	grid-template-rows: 100px minmax(700px, auto);
+	background-color: #ffffff;
+	margin: 26px auto;
+	box-shadow: (0px 4px 12px rgba(0, 0, 0, 0.15));
+	&__text {
+		margin-top: 26px;
+		padding: 15px 14px 24px 16px;
+	}
+}
