@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface iUser {
-  email: string | null;
+  email: string;
   token: string;
-  username: string | null;
-  image?: string | null;
+  username: string;
+  image?: string;
 }
 const initialState = {
-  email: null,
+  email: '',
   token: '',
-  username: null,
+  username: '',
   image: '',
 } as iUser;
 
@@ -24,9 +24,10 @@ const userSlice = createSlice({
       state.image = payload.image;
     },
     removeUser(state) {
-      state.email = null;
+      state.email = '';
       state.token = '';
-      state.username = null;
+      state.username = '';
+      state.image = '';
     },
   },
 });
