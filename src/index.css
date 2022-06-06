@@ -1,25 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:regular);
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500);
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html body {
-	margin: 0;
-	background: #ebeef3;
-	font-family: 'Inter';
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 28px;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background: #ebeef3;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+  font-family: Roboto;
 }
 ul,
 ol {
-	margin: 0;
-	list-style: none;
+  margin: 0;
+  list-style: none;
 }
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+p {
+  margin: 0;
 }

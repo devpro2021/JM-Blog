@@ -1,9 +1,0 @@
-.articles {
-	margin: 0 auto;
-	& > div {
-		box-shadow: (0px 4px 12px rgba(0, 0, 0, 0.15));
-		&:not(:last-child) {
-			margin-bottom: 26px;
-		}
-	}
-}

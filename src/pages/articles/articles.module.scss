@@ -1,0 +1,30 @@
+.articles {
+  margin: 0 auto;
+  & > div {
+    box-shadow: (0px 4px 12px rgba(0, 0, 0, 0.15));
+    &:not(:last-child) {
+      margin-bottom: 26px;
+    }
+  }
+}
+.articles .articles__pagination {
+  box-shadow: none;
+  margin: 0 auto;
+  text-align: center;
+  li {
+    border: none;
+    background-color: transparent;
+    button {
+      border: none;
+      background-color: transparent;
+    }
+  }
+  :global {
+    .ant-pagination-item-active {
+      background-color: #1890ff;
+      a {
+        color: #ffffff;
+      }
+    }
+  }
+}

@@ -3,47 +3,49 @@
   border-radius: 5px;
   &__inner {
     background-color: #ffffff;
-    display: grid;
-    grid-template-columns: 660px 150px;
-    column-gap: 100px;
+    min-height: 140px;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
     padding: 15px 14px 24px 16px;
+    border-radius: 5px;
   }
   &__info {
     display: block;
+    max-width: 660px;
+    word-break: break-all;
   }
   &__title-wrapper {
     display: flex;
-    align-items: baseline;
+    align-items: center;
   }
   &__title {
     display: inline-flex;
     flex-wrap: wrap;
-    margin-right: 34px;
+    margin-right: 13px;
+    margin-bottom: 0;
     font-size: 20px;
     color: #1890ff;
+    font-weight: 400;
+  }
+  &__like-wrapper {
+    display: flex;
+    align-items: center;
   }
   &__likes {
-    width: 33px;
-    font-size: 12px;
-    line-height: 22px;
-    vertical-align: text-bottom;
-    position: relative;
-    top: -3px;
-    right: 21px;
-    text-align: right;
+    width: 16px;
+    height: 16px;
     border: none;
+    margin-right: 5px;
     background-color: transparent;
     cursor: pointer;
-    &::before {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: url('../../assets/icons/heart.svg') no-repeat center center;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__count {
+    font-size: 12px;
+    line-height: 22px;
   }
   &__tags {
     display: flex;
@@ -67,28 +69,29 @@
     margin-top: 4px;
     color: rgba(0, 0, 0, 0.75);
   }
+  &__user {
+    display: flex;
+    justify-content: flex-end;
+    width: 200px;
+  }
 }
 
 .user-info {
-  display: grid;
+  display: flex;
   margin-bottom: auto;
-  grid-template-columns: 85px 46px;
+  justify-content: space-between;
   column-gap: 12px;
   grid-template-rows: 2fr;
-  grid-template-areas:
-    'name avatar'
-    'date avatar';
+
   &__name {
-    grid-area: name;
+    word-break: break-word;
   }
   &__date {
-    grid-area: date;
     font-size: 12px;
     line-height: 22px;
     color: rgba(0, 0, 0, 0.5);
   }
   &__avatar {
-    grid-area: avatar;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -97,4 +100,14 @@
       max-width: 100%;
     }
   }
+}
+
+.active {
+  &::before {
+    background: url('../../assets/icons/favourited.svg') no-repeat center center;
+  }
+}
+
+img {
+  vertical-align: unset;
 }

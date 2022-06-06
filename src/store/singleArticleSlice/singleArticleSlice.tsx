@@ -1,20 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { IArticle } from '../articlesSlice/article.types';
-interface SingleArticle {
-  article: IArticle;
-  isLoading: boolean;
-}
+import { ISingleArticle } from './singleArticleSlice.types';
+
 const singleArticleSlice = createSlice({
   name: 'singleArticle',
   initialState: {
     article: {},
-    isLoading: true,
-  } as SingleArticle,
+  } as ISingleArticle,
   reducers: {
     addArticle: (state, { payload }) => {
       state.article = { ...payload.article };
-      state.isLoading = false;
     },
   },
 });
