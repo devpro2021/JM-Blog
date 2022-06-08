@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Form, Input, Button } from 'antd';
 
-import { errorModal } from 'helpers/errorModal';
 import { ICreateArticle } from 'pages/createArticle/createArticle.types';
+import { errorModal } from 'helpers/errorModal';
 
 import s from './articleForm.module.scss';
 
@@ -15,12 +15,12 @@ interface FieldData {
 }
 
 interface CustomizedFormProps {
-  fields?: FieldData[];
+  fields: FieldData[];
   title: string;
   submitHandler: (values: ICreateArticle) => void;
 }
 
-const ArticleForm: FC<CustomizedFormProps> = ({
+const CustomizedForm: FC<CustomizedFormProps> = ({
   fields,
   title,
   submitHandler,
@@ -131,4 +131,4 @@ const ArticleForm: FC<CustomizedFormProps> = ({
   );
 };
 
-export { ArticleForm };
+export { CustomizedForm };

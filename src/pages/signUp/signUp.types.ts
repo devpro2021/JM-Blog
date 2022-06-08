@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface User {
   username: string;
   email: string;
@@ -12,4 +14,14 @@ export interface Errors {
 }
 export interface IError {
   errors: Errors;
+}
+
+export interface iServerErrorData {
+  errors: {
+    username?: string;
+    email?: string;
+  };
+}
+export interface iServerError extends AxiosResponse {
+  data: iServerErrorData;
 }

@@ -30,7 +30,10 @@ root.render(
             <Route path="/" element={<Main />} />
             <Route path="/articles" element={<Main />} />
             <Route path="/articles/:slug" element={<SingleArticlePage />} />
-            <Route path="/articles/:slug/edit" element={<EditArticle />} />
+            <Route
+              path="/articles/:slug/edit"
+              element={<PrivateRoute component={EditArticle} />}
+            />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/error" element={<Error />} />

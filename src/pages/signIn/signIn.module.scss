@@ -67,4 +67,10 @@
     text-align: center;
     margin: 0 auto;
   }
+  .server-error,
+  .error {
+    color: red;
+    font-size: 16px;
+    margin-top: 5px;
+  }
 }

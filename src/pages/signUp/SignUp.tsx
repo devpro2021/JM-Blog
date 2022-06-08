@@ -7,15 +7,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from 'store/store';
 import { endpoints } from 'services/apiServices';
 import { setUser } from 'store/userSlice/userSlice';
-import { message } from 'helpers/signUpMessage';
-import { errorModal } from 'helpers/errorModal';
 
 import s from './signUp.module.scss';
 import { validation } from './validation';
-import { User } from './signUp.types';
+import { iServerError, iServerErrorData, User } from './signUp.types';
 
 const SignUp: FC = () => {
   const [checked, setChecked] = useState(false);
+  const initError = {
+    username: '',
+    email: '',
+  };
+  const [serverError, setserverError] = useState(initError);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const {
@@ -43,11 +46,13 @@ const SignUp: FC = () => {
             username: user.username,
           }),
         );
+        setserverError({ ...serverError, ...initError });
         navigate('/', { replace: true });
       } catch (error) {
         const err = error as AxiosError;
-        const errObj = JSON.parse(err?.response?.request.responseText);
-        errorModal(message(errObj));
+        const respErr = err.response as iServerError;
+        const errorData = respErr.data.errors;
+        setserverError({ ...serverError, ...errorData });
       }
     }
     fetchNewUser();
@@ -74,6 +79,11 @@ const SignUp: FC = () => {
           {errors?.username && (
             <p className={s.error}>{errors?.username.message || 'Error'}</p>
           )}
+          {serverError.username ? (
+            <p className={s.error}>
+              {'Пользователь с таким именем уже зарегистрирован'}
+            </p>
+          ) : null}
         </label>
         <label>
           Email address
@@ -87,6 +97,11 @@ const SignUp: FC = () => {
           {errors?.email && (
             <p className={s.error}>{errors?.email.message || 'Error'}</p>
           )}
+          {serverError.email ? (
+            <p className={s.error}>
+              {'Пользователь с таким email уже зарегистрирован'}
+            </p>
+          ) : null}
         </label>
         <label>
           Password

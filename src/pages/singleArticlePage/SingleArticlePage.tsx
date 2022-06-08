@@ -24,6 +24,7 @@ const SingleArticlePage: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showFlag, setShowFlag] = useState(false);
   const articleData = useAppSelector(state => state.singleArticle.article);
+
   const navigate = useNavigate();
   const { isAuth, username } = useAuth();
 

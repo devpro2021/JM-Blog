@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,13 +6,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from 'store/store';
 import { endpoints } from 'services/apiServices';
 import { setUser } from 'store/userSlice/userSlice';
-import { errorModal } from 'helpers/errorModal';
 
 import { UserIn } from './signIn.types';
 import { validation } from './validation';
 import s from './signIn.module.scss';
 
 const SignIn: FC = () => {
+  const [serverError, setServerError] = useState('');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -39,11 +39,13 @@ const SignIn: FC = () => {
             token: user.token,
             username: user.username,
             image: user.image,
+            error: null,
           }),
         );
+        setServerError('');
         navigate('/', { replace: true });
       } catch (error) {
-        errorModal('Email или пароль не верны');
+        setServerError('Логин или пароль не верные');
       }
     }
     loginUser();
@@ -78,6 +80,7 @@ const SignIn: FC = () => {
             <p className={s.error}>{errors?.password.message || 'Error'}</p>
           )}
         </label>
+        <p className={s['server-error']}>{serverError}</p>
         <button type="submit">Login</button>
         <p>
           Don’t have an account? <Link to="/sign-up">Sign Up</Link>.

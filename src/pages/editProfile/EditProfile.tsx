@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
-import { useAppDispatch } from 'store/store';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { endpoints } from 'services/apiServices';
 import { setUser } from 'store/userSlice/userSlice';
 import { errorModal } from 'helpers/errorModal';
@@ -17,7 +17,7 @@ import s from './editProfile.module.scss';
 const EditProfile: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  const { username, email, image } = useAppSelector(state => state.user);
   const {
     register,
     handleSubmit,
@@ -39,7 +39,6 @@ const EditProfile: FC = () => {
       try {
         const response = await endpoints.editUser(newUser);
         const { user } = response.data;
-        console.log(user);
         dispatch(
           setUser({
             email: user.email,
@@ -70,6 +69,7 @@ const EditProfile: FC = () => {
             {...register('username')}
             style={{ borderColor: errors.username ? 'red' : '' }}
             autoFocus
+            defaultValue={username}
           />
           {errors?.username && (
             <p className={s.error}>{errors?.username.message || 'Error'}</p>
@@ -83,6 +83,7 @@ const EditProfile: FC = () => {
             placeholder="Email address"
             {...register('email')}
             style={{ borderColor: errors.email ? 'red' : '' }}
+            defaultValue={email}
           />
           {errors?.email && (
             <p className={s.error}>{errors?.email.message || 'Error'}</p>
@@ -110,6 +111,7 @@ const EditProfile: FC = () => {
             {...register('image')}
             style={{ borderColor: errors.username ? 'red' : '' }}
             autoFocus
+            defaultValue={image}
           />
           {errors?.image && (
             <p className={s.error}>{errors?.image.message || 'Error'}</p>

@@ -33,7 +33,7 @@ const CreateArticle: FC = () => {
     }
     fetchNewArticle();
   };
-  return <ArticleForm title="Create new account" submitHandler={submitFunc} />;
+  return <ArticleForm title="Create article" submitHandler={submitFunc} />;
 };
 
 export { CreateArticle };

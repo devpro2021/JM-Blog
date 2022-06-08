@@ -9,7 +9,6 @@ import { changePage } from 'store/appSlice/appSlice';
 import 'antd/dist/antd.css';
 import s from './articles.module.scss';
 
-//TODO застилизовать пагинацию
 const Articles: FC = () => {
   const dispatch = useAppDispatch();
   const articlesCount = useAppSelector(state => state.articles.articlesCount);
