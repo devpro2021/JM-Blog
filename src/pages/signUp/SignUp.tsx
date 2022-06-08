@@ -10,7 +10,7 @@ import { setUser } from 'store/userSlice/userSlice';
 
 import s from './signUp.module.scss';
 import { validation } from './validation';
-import { iServerError, iServerErrorData, User } from './signUp.types';
+import { iServerError, User } from './signUp.types';
 
 const SignUp: FC = () => {
   const [checked, setChecked] = useState(false);
